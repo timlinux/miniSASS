@@ -32,7 +32,7 @@ Create the python virtual environment
 
 Install initial system-level dependencies
 
-    apt-get install python-dev libjpeg8-dev libpng12-dev libfreetype6-dev zlib1g-dev
+    apt-get install python-dev libjpeg8-dev libpng12-dev libfreetype6-dev zlib1g-dev python-psycopg2
  (or libjpeg62-dev if you are on Ubuntu 12.04 or lower)
 
 If you still get this in the next step when compiling PIL:
@@ -77,20 +77,14 @@ Checkout this repository from GitHub
     git clone https://github.com/sokolic/miniSASS.git minisass
     cd minisass/
 
-Now, copy settings.py.templ to settings.py, and set the database credentials correctly.
-
-    cp minisass/settings.py.templ minisass/settings.py
-    vim minisass/settings.py
-
-Change settings to match your database credentials, etc.
 
 Initialize your database and start the site
 -------------------------------------------
 
-    python manage.py syncdb --all
-    python manage.py migrate --fake
-    python manage.py collectstatic -l
-    python manage.py runserver 8001
+    scripts/manage.sh syncdb --all
+    scripts/manage.sh migrate --fake
+    scripts/manage.sh collectstatic -l
+    scripts/manage.sh runserver 8001
 
 You should have a running, but empty, Django-CMS website.
 
@@ -104,7 +98,10 @@ Then follow the advice here: http://stackoverflow.com/questions/18643998/geodjan
 Setting up the spatial data layers
 ==================================
 
-Layers marked Optional form part of the Rivers and Catchments base map on minisass.org. You can load your own layers and publish them yourself using a web map server such as Geoserver or QGIS server, or fetch the basemap from the minisass Geoserver WMS. 
+Layers marked Optional form part of the Rivers and Catchments base map on
+minisass.org. You can load your own layers and publish them yourself using a 
+web map server such as Geoserver or QGIS server, or fetch the basemap from the
+minisass Geoserver WMS. 
 
 Rivers and dams (optional)
 ---------------
