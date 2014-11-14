@@ -32,7 +32,9 @@ Create the python virtual environment
 
 Install initial system-level dependencies
 
-    apt-get install python-dev libjpeg8-dev libpng12-dev libfreetype6-dev zlib1g-dev python-psycopg2
+    apt-get install python-dev libjpeg8-dev libpng12-dev \
+	libfreetype6-dev zlib1g-dev python-psycopg2 \
+	python-pycurl
  (or libjpeg62-dev if you are on Ubuntu 12.04 or lower)
 
 If you still get this in the next step when compiling PIL:
